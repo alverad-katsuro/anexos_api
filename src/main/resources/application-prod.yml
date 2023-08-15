@@ -1,0 +1,22 @@
+logging:
+  level:
+    '[org.hibernate.stat]': debug
+
+spring:
+  #DEVTOOLS
+  devtools:
+    add-properties: false
+
+  # JPA properties
+  jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      '[hibernate.format_sql]' : true
+      '[hibernate.generate_statistics]' : true
+      '[persistence.schema-generation.scripts.create-target]' : create.sql

@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  anexos_mongo:
+    container_name: anexos_mongo
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+      args:
+        - profile=prod
+    image: anexos_mongo:latest
+    environment:
+      - TZ=America/Belem
+    env_file:
+      - .env
+    restart: always
+    volumes:
+      - type: bind
+        source: /var/log/apiAnexoMongo.log
+        target: /apiAnexoMongo.log
+    ports:
+      - ${APP_PORT}:${APP_PORT}
