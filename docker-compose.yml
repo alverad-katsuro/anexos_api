@@ -1,21 +1,24 @@
-version: "3.3"
+version: "3.9"
 services:
-  anexos_mongo:
-    container_name: anexos_mongo
+  anexos_mongo_transparencia:
     build:
       context: ./
       dockerfile: docker/Dockerfile
-      args:
-        - profile=prod
-    image: anexos_mongo:latest
+    image: registry.gitlab.alverad.com.br/anexos/anexos_api:latest
     environment:
       - TZ=America/Belem
     env_file:
       - .env
     restart: always
+    networks:
+      - traefik-public
     volumes:
       - type: bind
         source: /var/log/apiAnexoMongo.log
         target: /apiAnexoMongo.log
     ports:
       - ${APP_PORT}:${APP_PORT}
+
+networks:
+  traefik-public:
+    external: true

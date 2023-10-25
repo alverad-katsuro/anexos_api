@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.2</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>3.1.5</version>
+		<relativePath/>
+		<!-- lookup parent from repository -->
 	</parent>
-	<groupId>alveradkatsuro.com.br</groupId>
+	<groupId>br.com.alverad</groupId>
 	<artifactId>anexos_mongo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>anexos_mongo</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>20</java.version>
+		<java.version>21</java.version>
+		<spring-cloud.version>2022.0.4</spring-cloud.version>
 	</properties>
 	<dependencies>
 
@@ -61,30 +63,121 @@
 			<scope>test</scope>
 		</dependency>
 
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-ui -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+
+		<!-- SWAGGER  -->
 		<!-- swagger -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.1.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-starter-webmvc-api -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
 			<version>2.1.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-hateoas -->
 		<dependency>
-			<groupId>com.github.therapi</groupId>
-			<artifactId>therapi-runtime-javadoc-scribe</artifactId>
-			<version>0.13.0</version>
-			<scope>provided</scope>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-hateoas</artifactId>
+			<version>1.7.0</version>
 		</dependency>
+
+
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-security -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-security</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-ui</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-webflux-ui -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-webflux-ui</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-javadoc -->
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-javadoc</artifactId>
+			<version>1.7.0</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/com.github.therapi/therapi-runtime-javadoc -->
 		<dependency>
 			<groupId>com.github.therapi</groupId>
 			<artifactId>therapi-runtime-javadoc</artifactId>
-			<version>0.13.0</version>
+			<version>0.15.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.github.therapi/therapi-runtime-javadoc-scribe -->
+		<dependency>
+			<groupId>com.github.therapi</groupId>
+			<artifactId>therapi-runtime-javadoc-scribe</artifactId>
+			<version>0.15.0</version>
+		</dependency>
+
 		<!--  -->
+
+		<!-- Sentr -->
+
+		<dependency>
+			<groupId>io.sentry</groupId>
+			<artifactId>sentry-spring-boot-starter-jakarta</artifactId>
+			<version>6.31.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.sentry</groupId>
+			<artifactId>sentry-logback</artifactId>
+			<version>6.31.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/de.codecentric/spring-boot-admin-starter-client -->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>3.1.7</version>
+		</dependency>
+
 	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
 		<plugins>
@@ -98,6 +191,24 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>com.github.therapi</groupId>
+							<artifactId>therapi-runtime-javadoc-scribe</artifactId>
+							<version>0.15.0</version>
+						</path>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>${lombok.version}</version>
+						</path>
+					</annotationProcessorPaths>
 				</configuration>
 			</plugin>
 		</plugins>

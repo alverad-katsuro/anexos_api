@@ -62,3 +62,27 @@ server:
 
 cors:
   allowedOriginPatterns: ${ALLOWED_ORIGINS}
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,auditevents,configprops,env,httptrace,loggers
+  info:
+    env:
+      enabled: false
+  endpoint:
+    loggers:
+      enabled: true
+    health:
+      show-details: when-authorized
