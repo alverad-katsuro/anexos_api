@@ -20,3 +20,39 @@ spring:
       '[hibernate.format_sql]' : true
       '[hibernate.generate_statistics]' : true
       '[persistence.schema-generation.scripts.create-target]' : create.sql
+
+
+sentry:
+  dsn: ${SENTRY_DNS}
+  in-app-includes:
+    - br.com.alverad.anexos_mongo
+  traces-sample-rate: ${SENTRY_TRACE_RATE}
+  logging:
+    minimum-event-level: error
+    minimum-breadcrumb-level: debug
+
+
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+  client:
+    enabled: true
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://eureka:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,auditevents,configprops,env,httptrace,loggers
+  info:
+    env:
+      enabled: false
+  endpoint:
+    loggers:
+      enabled: true
+    health:
+      show-details: when-authorized

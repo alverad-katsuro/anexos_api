@@ -15,16 +15,9 @@ public interface ArquivoService {
 	public ObjectId salvarArquivo(ArquivoDTO arquivo)
 			throws IOException;
 
-	public ObjectId salvarArquivo(ObjectId id, Optional<String> nome, MultipartFile arquivo)
-			throws IOException;
-
-	public ObjectId salvarArquivo(Optional<String> nome, MultipartFile arquivo)
-			throws IOException;
-
-	public ObjectId salvarArquivo(MultipartFile arquivo)
-			throws IOException;
-
 	public GridFsResource recuperarArquivo(ObjectId id)
 			throws IllegalArgumentException, SecurityException, NotFoundException;
+
+   	public void deleteArquivo(ObjectId id);
 
 }

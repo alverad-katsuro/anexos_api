@@ -39,32 +39,6 @@ public class ArquivoServiceImpl implements ArquivoService {
                 arquivo.getArquivo().getContentType());
     }
 
-    @Override
-    public ObjectId salvarArquivo(ObjectId id, Optional<String> nome, MultipartFile arquivo)
-            throws IOException {
-        if (id != null) {
-            gridFsTemplate.delete(new Query(Criteria.where("_id").is(id)));
-        }
-        return gridFsTemplate.store(
-                arquivo.getInputStream(), nome.orElse(UUID.randomUUID().toString()),
-                arquivo.getContentType());
-    }
-
-    @Override
-    public ObjectId salvarArquivo(Optional<String> nome, MultipartFile arquivo)
-            throws IOException {
-        return gridFsTemplate.store(
-                arquivo.getInputStream(), nome.orElse(UUID.randomUUID().toString()),
-                arquivo.getContentType());
-    }
-
-    @Override
-    public ObjectId salvarArquivo(MultipartFile arquivo)
-            throws IOException {
-        return gridFsTemplate.store(
-                arquivo.getInputStream(), UUID.randomUUID().toString(),
-                arquivo.getContentType());
-    }
 
     @Override
     public GridFsResource recuperarArquivo(ObjectId id)
@@ -75,6 +49,11 @@ public class ArquivoServiceImpl implements ArquivoService {
         }
         return gridFsOperations.getResource(file);
 
+    }
+
+    @Override
+    public void deleteArquivo(ObjectId id) {
+        gridFsTemplate.delete(new Query(Criteria.where("_id").is(id)));
     }
 
 }
