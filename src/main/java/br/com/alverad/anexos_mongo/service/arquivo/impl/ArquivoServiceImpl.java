@@ -1,7 +1,6 @@
 package br.com.alverad.anexos_mongo.service.arquivo.impl;
 
 import java.io.IOException;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.bson.types.ObjectId;
@@ -11,7 +10,6 @@ import org.springframework.data.mongodb.gridfs.GridFsOperations;
 import org.springframework.data.mongodb.gridfs.GridFsResource;
 import org.springframework.data.mongodb.gridfs.GridFsTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.mongodb.client.gridfs.model.GridFSFile;
 
@@ -38,7 +36,6 @@ public class ArquivoServiceImpl implements ArquivoService {
                 arquivo.getArquivo().getInputStream(), arquivo.getNome().orElse(UUID.randomUUID().toString()),
                 arquivo.getArquivo().getContentType());
     }
-
 
     @Override
     public GridFsResource recuperarArquivo(ObjectId id)
