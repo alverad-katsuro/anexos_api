@@ -48,7 +48,7 @@ public class ArquivoController {
 				.body(resource);
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ANEXO_ADMIN')")
 	@Operation(security = { @SecurityRequirement(name = "Bearer") })
 	@PostMapping(consumes = { MediaType.MULTIPART_FORM_DATA_VALUE })
 	public ResponseEntity<String> salvar(@ModelAttribute ArquivoDTO arquivoDTO)
@@ -59,7 +59,7 @@ public class ArquivoController {
 				.toUri()).body(id.toString());
 	}
 
-	@PreAuthorize("hasRole('ADMIN')")
+	@PreAuthorize("hasRole('ANEXO_ADMIN')")
 	@DeleteMapping(value = "/{arquivoId}")
 	@Operation(security = { @SecurityRequirement(name = "Bearer") })
 	public void delete(@PathVariable String arquivoId)
