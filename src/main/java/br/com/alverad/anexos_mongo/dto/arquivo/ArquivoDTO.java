@@ -16,7 +16,7 @@ public class ArquivoDTO {
 
     private ObjectId id;
 
-    private Optional<String> nome;
+    private Optional<String> nome = Optional.empty();
 
     private MultipartFile arquivo;
 
